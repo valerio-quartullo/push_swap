@@ -14,6 +14,7 @@ void	rrotate_b(t_node **b);
 
 ordine lista
 algo_simple                                 /*INIZIATO/*
+    controllo ra o rra
 algo_medium
 algo_complex
 algo_adaptive
