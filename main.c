@@ -6,7 +6,7 @@
 /*   By: vquartul <vquartul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/17 12:29:05 by vquartul          #+#    #+#             */
-/*   Updated: 2026/06/17 18:41:57 by vquartul         ###   ########.fr       */
+/*   Updated: 2026/06/18 14:03:11 by vquartul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	print_stack(t_node *a)
 {
 	while (a)
 	{
-		printf("%d\n", a->value);
+		printf("%d = %d\n", a->rank, a->value);
 		a = a->next;
 	}
 }
@@ -40,5 +40,8 @@ int	main(int argc, char **argv)
 	b = NULL;
 	parse_numbers(argc, argv, start, &a);
 	print_stack(a);
+	//algo_simple(argc - start, a, b);
+	printf("%d", algo_simple(argc, a, b));
+
 	return (0);
 }

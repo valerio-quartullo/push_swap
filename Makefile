@@ -7,7 +7,11 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror
 INCLUDES = -I. -I$(LIBFT_DIR)
 
-SRCS = main.c parse_flags.c parse_numbers.c
+SRCS = main.c parse_flags.c parse_numbers.c algo_simple.c \
+	   operations/rotate_a.c \
+	   operations/rrotate_a.c \
+	   operations/push_b.c
+
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)

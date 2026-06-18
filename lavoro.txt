@@ -1,0 +1,20 @@
+parse_numbers.c
+    - parsing dei numeri                    /*INIZIATO/*
+    - inserimento in lista                  /*FATTO/*
+    - controllo ERRORI                      
+
+void	swap_a(t_node **a);
+void	swap_b(t_node **b);
+void	push_a(t_node **a, t_node **b);
+void	push_b(t_node **a, t_node **b);     /*FATTO*/
+void	rotate_a(t_node **a);               /*FATTO*/
+void	rotate_b(t_node **b);
+void	rrotate_a(t_node **a);              /*FATTO*/
+void	rrotate_b(t_node **b);
+
+ordine lista
+algo_simple                                 /*INIZIATO/*
+algo_medium
+algo_complex
+algo_adaptive
+bench
