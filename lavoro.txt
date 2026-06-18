@@ -6,15 +6,15 @@ parse_numbers.c
 void	swap_a(t_node **a);
 void	swap_b(t_node **b);
 void	push_a(t_node **a, t_node **b);
-void	push_b(t_node **a, t_node **b);     /*FATTO*/
-void	rotate_a(t_node **a);               /*FATTO*/
+void	push_b(t_node **a, t_node **b);     /*FATTO da controllare*/
+void	rotate_a(t_node **a);               /*FATTO da controllare*/
 void	rotate_b(t_node **b);
 void	rrotate_a(t_node **a);              /*FATTO*/
 void	rrotate_b(t_node **b);
 
 ordine lista
 algo_simple                                 /*INIZIATO/*
-    controllo ra o rra
+    controllo ra o rra                      /*ok/*
 algo_medium
 algo_complex
 algo_adaptive

@@ -6,7 +6,7 @@
 /*   By: vquartul <vquartul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/17 12:21:56 by vquartul          #+#    #+#             */
-/*   Updated: 2026/06/18 12:16:05 by vquartul         ###   ########.fr       */
+/*   Updated: 2026/06/18 15:40:53 by vquartul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,11 @@ typedef struct s_node
 int					parse_flags(int argc, char **argv, t_options *opt);
 void				error_exit(void);
 int					parse_numbers(int argc, char **argv, int start, t_node **a);
-int	algo_simple(int argc, t_node *a, t_node *b);
-void	rotate_a(t_node **a);
-void	rrotate_a(t_node **a);
-void	push_b(t_node **a, t_node **b);
+t_node				*new_node(int content);
+int					position_of_node(t_node *head, t_node *node);
+int					algo_simple(int argc, t_node **a, t_node **b);
+void				rotate_a(t_node **a);
+void				rrotate_a(t_node **a);
+void				push_b(t_node **a, t_node **b);
 
 #endif
