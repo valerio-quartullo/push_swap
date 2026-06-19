@@ -45,33 +45,6 @@ t_node	*find_min(t_node *a)
 	return (min);
 }
 
-<<<<<<< HEAD
-void	assign_rank(t_node *a)
-{
-	t_node	*current;
-	t_node	*compare;
-	int		new_rank;
-
-	new_rank = 0;
-	current = a;
-	while(current)
-	{
-		compare = a;
-		while(compare)
-		{
-			if (current->value > compare->value)
-				new_rank++;
-			compare = compare->next;
-		}
-		current->rank = new_rank;
-		current = current->next;
-		new_rank = 0;
-	}
-	return ;
-}
-
-int	algo_simple(int argc, t_node *a, t_node *b)
-=======
 int	algo_simple(int argc, t_node **a, t_node **b)
 >>>>>>> f3f32cb79fed2867d3337c700441bcd5aadde790
 {
