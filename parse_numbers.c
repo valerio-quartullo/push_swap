@@ -23,6 +23,30 @@ t_node	*new_node(int content)
 	return (node);
 }
 
+void	assign_rank(t_node *a)
+{
+	t_node	*current;
+	t_node	*compare;
+	int		new_rank;
+
+	new_rank = 0;
+	current = a;
+	while(current)
+	{
+		compare = a;
+		while(compare)
+		{
+			if (current->value > compare->value)
+				new_rank++;
+			compare = compare->next;
+		}
+		current->rank = new_rank;
+		current = current->next;
+		new_rank = 0;
+	}
+	return ;
+}
+
 void	node_add_front(t_node **lst, t_node *new)
 {
 	if (!lst || !new)
