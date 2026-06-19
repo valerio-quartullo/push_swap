@@ -3,18 +3,31 @@ parse_numbers.c
     - inserimento in lista                  /*FATTO/*
     - controllo ERRORI                      
 
+<<<<<<< HEAD
 void	swap_a(t_node **a);                 /*FATTO*/
 void	swap_b(t_node **b);                 /*FATTO*/
 void	push_a(t_node **a, t_node **b);     /*FATTO*/
 void	push_b(t_node **a, t_node **b);     /*FATTO*/
 void	rotate_a(t_node **a);               /*FATTO*/
 void	rotate_b(t_node **b);               /*FATTO*/
+=======
+void	swap_a(t_node **a);
+void	swap_b(t_node **b);
+void	push_a(t_node **a, t_node **b);
+void	push_b(t_node **a, t_node **b);     /*FATTO da controllare*/
+void	rotate_a(t_node **a);               /*FATTO da controllare*/
+void	rotate_b(t_node **b);
+>>>>>>> f3f32cb79fed2867d3337c700441bcd5aadde790
 void	rrotate_a(t_node **a);              /*FATTO*/
 void	rrotate_b(t_node **b);              /*FATTO*/
 
 ordine lista				    /*INIZIATO/*
 algo_simple                                 /*INIZIATO/*
+<<<<<<< HEAD
 controllo ra o rra
+=======
+    controllo ra o rra                      /*ok/*
+>>>>>>> f3f32cb79fed2867d3337c700441bcd5aadde790
 algo_medium
 algo_complex
 algo_adaptive

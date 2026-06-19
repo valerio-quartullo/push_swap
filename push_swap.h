@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/17 12:21:56 by vquartul          #+#    #+#             */
-/*   Updated: 2026/06/19 10:44:19 by marvin           ###   ########.fr       */
+/*   Updated: 2026/06/19 11:27:37 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,8 @@ void				rotate_b(t_node **b);
 void				rrotate_a(t_node **a);
 void				rrotate_b(t_node **b);
  
+t_node				*new_node(int content);
+int					position_of_node(t_node *head, t_node *node);
+int					algo_simple(int argc, t_node **a, t_node **b);
+
 #endif

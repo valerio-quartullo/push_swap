@@ -6,18 +6,22 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/17 12:29:05 by vquartul          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2026/06/19 10:44:19 by marvin           ###   ########.fr       */
+=======
+/*   Updated: 2026/06/18 15:45:34 by vquartul         ###   ########.fr       */
+>>>>>>> f3f32cb79fed2867d3337c700441bcd5aadde790
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-//PROVA DI STAMPA
+// PROVA DI STAMPA
 void	print_stack(t_node *a)
 {
 	while (a)
 	{
-		printf("%d = %d\n", a->rank, a->value);
+		printf("%d\n", a->value);
 		a = a->next;
 	}
 }
@@ -41,8 +45,10 @@ int	main(int argc, char **argv)
 	parse_numbers(argc, argv, start, &a);
 	assign_rank(a);
 	print_stack(a);
-	//algo_simple(argc - start, a, b);
-	printf("%d", algo_simple(argc, a, b));
-
+	// algo_simple(argc - start, a, b);
+	printf("%d\n\n", algo_simple(argc, &a, &b));
+	print_stack(a);
+	write(1, "\n", 1);
+	print_stack(b);
 	return (0);
 }
