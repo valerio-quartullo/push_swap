@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vquartul <vquartul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/17 12:29:05 by vquartul          #+#    #+#             */
-/*   Updated: 2026/06/18 14:03:11 by vquartul         ###   ########.fr       */
+/*   Updated: 2026/06/19 10:44:19 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ int	main(int argc, char **argv)
 	a = NULL;
 	b = NULL;
 	parse_numbers(argc, argv, start, &a);
+	assign_rank(a);
 	print_stack(a);
 	//algo_simple(argc - start, a, b);
 	printf("%d", algo_simple(argc, a, b));

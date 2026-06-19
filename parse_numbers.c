@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_numbers.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vquartul <vquartul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/17 16:21:58 by vquartul          #+#    #+#             */
-/*   Updated: 2026/06/18 14:04:20 by vquartul         ###   ########.fr       */
+/*   Updated: 2026/06/19 10:44:19 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,9 @@ int	parse_numbers(int argc, char **argv, int start, t_node **a)
 	t_node	*new;
 
 	i = argc - 1;
-	j = argc - start;
 	while (i >= start)
 	{
 		new = new_node(ft_atoi(argv[i]));
-		new->rank = j;
-		j --;
 		if (!new)
 			return (0);
 		node_add_front(a, new);

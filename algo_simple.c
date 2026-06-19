@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   algo_simple.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vquartul <vquartul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 09:36:27 by vquartul          #+#    #+#             */
-/*   Updated: 2026/06/18 12:47:36 by vquartul         ###   ########.fr       */
+/*   Updated: 2026/06/19 10:44:19 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,30 @@ t_node	*find_min(t_node *a)
 		a = a->next;
 	}
 	return (min);
+}
+
+void	assign_rank(t_node *a)
+{
+	t_node	*current;
+	t_node	*compare;
+	int		new_rank;
+
+	new_rank = 0;
+	current = a;
+	while(current)
+	{
+		compare = a;
+		while(compare)
+		{
+			if (current->value > compare->value)
+				new_rank++;
+			compare = compare->next;
+		}
+		current->rank = new_rank;
+		current = current->next;
+		new_rank = 0;
+	}
+	return ;
 }
 
 int	algo_simple(int argc, t_node *a, t_node *b)
