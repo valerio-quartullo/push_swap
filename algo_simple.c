@@ -46,7 +46,6 @@ t_node	*find_min(t_node *a)
 }
 
 int	algo_simple(int argc, t_node **a, t_node **b)
->>>>>>> f3f32cb79fed2867d3337c700441bcd5aadde790
 {
 	t_node	*min;
 	int	dist;
