@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
-void	rrotate_b(t_node **b)
+void	rrotate_b(t_node **b, int *count)
 {
 	t_node *last;
 	t_node	*prev;
@@ -28,4 +28,5 @@ void	rrotate_b(t_node **b)
 	last->next = *b;
 	*b = last;
 	write(1, "rrb\n", 4);
+	(*count)++;
 }

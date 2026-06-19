@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
-void    swap_a(t_node **a)
+void    swap_a(t_node **a, int *count)
 {
     int  value_temp;
     int  rank_temp;
@@ -24,5 +24,6 @@ void    swap_a(t_node **a)
     (*a)->value = value_temp;
     (*a)->rank = rank_temp;
     write(1, "sa\n", 3);
+    (*count)++;
     return ;
 }

@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 #include "push_swap.h"
 
-void	rotate_b(t_node **b)
+void	rotate_b(t_node **b, int *count)
 {
 	t_node *first;
 	t_node *tmp;
@@ -26,4 +26,5 @@ void	rotate_b(t_node **b)
 	tmp->next = first;
 	first->next = NULL;
 	write(1, "rb\n", 3);
+	(*count)++;
 }
