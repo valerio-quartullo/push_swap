@@ -58,7 +58,6 @@ void	node_add_front(t_node **lst, t_node *new)
 int	parse_numbers(int argc, char **argv, int start, t_node **a)
 {
 	int		i;
-	int		j;
 	t_node	*new;
 
 	i = argc - 1;

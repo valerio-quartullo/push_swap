@@ -40,22 +40,23 @@ typedef struct s_node
 
 int					parse_flags(int argc, char **argv, t_options *opt);
 void				error_exit(void);
-void    			assign_rank(t_node *a);
+int	*check_numbers(int argc, char **argv, int start);
+void				assign_rank(t_node *a);
 int					parse_numbers(int argc, char **argv, int start, t_node **a);
-int					algo_simple(int argc, t_node *a, t_node *b);
- 
+int					algo_simple(t_node **a, t_node **b);
+
 /* operazioni base */
-void				push_a(t_node **a, t_node **b);
-void				push_b(t_node **a, t_node **b);
-void				swap_a(t_node **a);
-void				swap_b(t_node **b);
-void				rotate_a(t_node **a);
-void				rotate_b(t_node **b);
-void				rrotate_a(t_node **a);
-void				rrotate_b(t_node **b);
- 
+void				push_a(t_node **a, t_node **b, int *count);
+void				push_b(t_node **a, t_node **b, int *count);
+void				swap_a(t_node **a, int *count);
+void				swap_b(t_node **b, int *count);
+void				rotate_a(t_node **a, int *count);
+void				rotate_b(t_node **b, int *count);
+void				rrotate_a(t_node **a, int *count);
+void				rrotate_b(t_node **b, int *count);
+
 t_node				*new_node(int content);
 int					position_of_node(t_node *head, t_node *node);
-int					algo_simple(int argc, t_node **a, t_node **b);
+int					atoi_check(const char *nptr);
 
 #endif

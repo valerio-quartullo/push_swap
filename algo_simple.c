@@ -5,16 +5,25 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/18 09:36:27 by vquartul          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2026/06/19 10:44:19 by marvin           ###   ########.fr       */
-=======
-/*   Updated: 2026/06/18 15:47:26 by vquartul         ###   ########.fr       */
->>>>>>> f3f32cb79fed2867d3337c700441bcd5aadde790
+/*   Created: 2026/06/19 12:00:36 by marvin            #+#    #+#             */
+/*   Updated: 2026/06/19 12:00:36 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	stack_size(t_node *a)
+{
+	int	size;
+
+	size = 0;
+	while (a)
+	{
+		a = a->next;
+		size++;
+	}
+	return (size);
+}
 
 int	position_of_node(t_node *head, t_node *node)
 {
@@ -45,40 +54,42 @@ t_node	*find_min(t_node *a)
 	return (min);
 }
 
-int	algo_simple(int argc, t_node **a, t_node **b)
+static void	extract_min(t_node **a, t_node **b, int *count)
 {
 	t_node	*min;
-	int	dist;
-	int	i;
-	int	count;
+	int		dist;
+	int		size;
 
-    count = 0;
-	i = 0;
+	size = stack_size(*a);
 	min = find_min(*a);
 	dist = position_of_node(*a, min);
-	printf("numero piú piccolo = %d \n", find_min(*a)->value);
-	printf("dist %d - %d\n", dist, argc / 2);
-	if (dist < argc / 2)
+	if (dist <= size / 2)
 	{
-		while (i < dist - 1)
+		while (dist > 0)
 		{
-			rrotate_a(a);
-            count ++;
-			i++;
+			rotate_a(a, count);
+			dist--;
 		}
-		push_b(a, b);
-        count ++;
 	}
 	else
 	{
-		while (i < argc - dist -1)
+		while (dist < size)
 		{
-			rotate_a(a);
-			count ++;
-            i++;
+			rrotate_a(a, count);
+			dist++;
 		}
-		push_b(a, b);
-        count ++;
 	}
+	push_b(a, b, count);
+}
+
+int	algo_simple(t_node **a, t_node **b)
+{
+	int	count;
+
+	count = 0;
+	while (*a)
+		extract_min(a, b, &count);
+	while (*b)
+		push_a(a, b, &count);
 	return (count);
 }

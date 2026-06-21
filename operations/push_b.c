@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void	push_b(t_node **a, t_node **b)
+void	push_b(t_node **a, t_node **b, int *count)
 {
 	t_node	*moved;
 
@@ -23,4 +23,5 @@ void	push_b(t_node **a, t_node **b)
 	moved->next = *b;
 	*b = moved;
 	write(1, "pb\n", 3);
+	(*count)++;
 }
