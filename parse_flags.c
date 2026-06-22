@@ -6,16 +6,51 @@
 /*   By: vquartul <vquartul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/17 12:48:25 by vquartul          #+#    #+#             */
-/*   Updated: 2026/06/17 17:30:01 by vquartul         ###   ########.fr       */
+/*   Updated: 2026/06/22 11:23:06 by vquartul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+
 void	error_exit(void)
 {
 	write(2, "Error\n", 6);
 	exit(1);
+}
+
+float	measure_disorder(t_node *a)
+{
+	int		n;
+	int		count;
+	int		total;
+	t_node	*current;
+	t_node	*compare;
+
+	n = 0;
+	current = a;
+	while (current)
+	{
+		n++;
+		current = current->next;
+	}
+	if (n <= 1)
+		return (0);
+	count = 0;
+	current = a;
+	while (current)
+	{
+		compare = current->next;
+		while (compare)
+		{
+			if (current->value > compare->value)
+				count++;
+			compare = compare->next;
+		}
+		current = current->next;
+	}
+	total = n * (n - 1) / 2;
+	return ((float)count / total);
 }
 
 int	parse_flags(int argc, char **argv, t_options *opt)

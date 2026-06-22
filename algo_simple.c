@@ -3,42 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   algo_simple.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: vquartul <vquartul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/19 12:00:36 by marvin            #+#    #+#             */
-/*   Updated: 2026/06/19 12:00:36 by marvin           ###   ########.fr       */
+/*   Updated: 2026/06/22 10:51:25 by vquartul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int	stack_size(t_node *a)
-{
-	int	size;
-
-	size = 0;
-	while (a)
-	{
-		a = a->next;
-		size++;
-	}
-	return (size);
-}
-
-int	position_of_node(t_node *head, t_node *node)
-{
-	int	pos;
-
-	pos = 0;
-	while (head)
-	{
-		if (head == node)
-			return (pos);
-		head = head->next;
-		pos++;
-	}
-	return (-1);
-}
 
 t_node	*find_min(t_node *a)
 {
@@ -54,15 +26,8 @@ t_node	*find_min(t_node *a)
 	return (min);
 }
 
-static void	extract_min(t_node **a, t_node **b, int *count)
+static void	move_to_top(t_node **a, int dist, int size, int *count)
 {
-	t_node	*min;
-	int		dist;
-	int		size;
-
-	size = stack_size(*a);
-	min = find_min(*a);
-	dist = position_of_node(*a, min);
 	if (dist <= size / 2)
 	{
 		while (dist > 0)
@@ -79,6 +44,21 @@ static void	extract_min(t_node **a, t_node **b, int *count)
 			dist++;
 		}
 	}
+}
+
+static void	extract_min(t_node **a, t_node **b, int *count)
+{
+	t_node	*min;
+	int		dist;
+	int		size;
+
+	size = stack_size(*a);
+	min = find_min(*a);
+	dist = position_of_node(*a, min);
+	if (dist == 1)
+		swap_a(a, count);
+	else
+		move_to_top(a, dist, size, count);
 	push_b(a, b, count);
 }
 

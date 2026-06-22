@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: vquartul <vquartul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/17 12:21:56 by vquartul          #+#    #+#             */
-/*   Updated: 2026/06/19 11:27:37 by marvin           ###   ########.fr       */
+/*   Updated: 2026/06/22 11:21:54 by vquartul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,13 @@ typedef struct s_node
 
 int					parse_flags(int argc, char **argv, t_options *opt);
 void				error_exit(void);
-int	*check_numbers(int argc, char **argv, int start);
+int					*check_numbers(int argc, char **argv, int start);
 void				assign_rank(t_node *a);
 int					parse_numbers(int argc, char **argv, int start, t_node **a);
+int					stack_size(t_node *a);
+int					position_of_node(t_node *head, t_node *node);
 int					algo_simple(t_node **a, t_node **b);
+float				measure_disorder(t_node *a);
 
 /* operazioni base */
 void				push_a(t_node **a, t_node **b, int *count);
