@@ -6,12 +6,11 @@
 /*   By: vquartul <vquartul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/17 12:48:25 by vquartul          #+#    #+#             */
-/*   Updated: 2026/06/22 11:23:06 by vquartul         ###   ########.fr       */
+/*   Updated: 2026/06/23 11:50:34 by vquartul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
 
 void	error_exit(void)
 {

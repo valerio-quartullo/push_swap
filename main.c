@@ -6,7 +6,7 @@
 /*   By: vquartul <vquartul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/17 12:29:05 by vquartul          #+#    #+#             */
-/*   Updated: 2026/06/22 11:57:01 by vquartul         ###   ########.fr       */
+/*   Updated: 2026/06/23 13:52:35 by vquartul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,11 @@ int	main(int argc, char **argv)
 		printf("Disorder: %.2f%%\n", measure_disorder(a));
 	if (!measure_disorder(a))
 		return (0);
+	
+	if (opt.strategy == ALGO_SIMPLE)
+		printf("algo_simple operations: %d\n\n", algo_simple(&a, &b));
+	if (opt.strategy == ALGO_MEDIUM)
+		printf("algo_medium operations: %d\n\n",algo_medium(&a, &b));
 	print_stack(a);
-	// algo_simple(argc - start, a, b);
-	printf("Operations: %d\n\n", algo_simple(&a, &b));
-	print_stack(a);
-	write(1, "\n", 1);
-	print_stack(b);
 	return (0);
 }

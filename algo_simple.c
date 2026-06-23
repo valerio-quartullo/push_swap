@@ -6,7 +6,7 @@
 /*   By: vquartul <vquartul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/19 12:00:36 by marvin            #+#    #+#             */
-/*   Updated: 2026/06/22 10:51:25 by vquartul         ###   ########.fr       */
+/*   Updated: 2026/06/23 12:24:53 by vquartul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,26 +24,6 @@ t_node	*find_min(t_node *a)
 		a = a->next;
 	}
 	return (min);
-}
-
-static void	move_to_top(t_node **a, int dist, int size, int *count)
-{
-	if (dist <= size / 2)
-	{
-		while (dist > 0)
-		{
-			rotate_a(a, count);
-			dist--;
-		}
-	}
-	else
-	{
-		while (dist < size)
-		{
-			rrotate_a(a, count);
-			dist++;
-		}
-	}
 }
 
 static void	extract_min(t_node **a, t_node **b, int *count)
