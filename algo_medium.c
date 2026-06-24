@@ -6,27 +6,51 @@
 /*   By: vquartul <vquartul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/23 11:14:30 by vquartul          #+#    #+#             */
-/*   Updated: 2026/06/23 12:49:18 by vquartul         ###   ########.fr       */
+/*   Updated: 2026/06/24 14:54:00 by vquartul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static t_node	*find_min_in_chunk(t_node *a, int max_rank)
+int	int_sqrt(int n)
 {
-	t_node	*min;
+	int	i;
 
-	min = NULL;
-	while (a)
+	i = 1;
+	while (i * i <= n)
+		i++;
+	return (i - 1);
+}
+
+static t_node	*find_closest_in_chunk(t_node *a, int max_rank, int size)
+{
+	t_node	*best;
+	t_node	*tmp;
+	int		best_dist;
+	int		pos;
+	int		dist;
+
+	best = NULL;
+	best_dist = size + 1;
+	tmp = a;
+	pos = 0;
+	while (tmp)
 	{
-		if (a->rank < max_rank)
+		if (tmp->rank < max_rank)
 		{
-			if (!min || a->rank < min->rank)
-				min = a;
+			dist = pos;
+			if (dist > size / 2)
+				dist = size - dist;
+			if (dist < best_dist)
+			{
+				best = tmp;
+				best_dist = dist;
+			}
 		}
-		a = a->next;
+		tmp = tmp->next;
+		pos++;
 	}
-	return (min);
+	return (best);
 }
 
 static int	extract_from_chunk(t_node **a, t_node **b, int *count,
@@ -38,24 +62,21 @@ static int	extract_from_chunk(t_node **a, t_node **b, int *count,
 	int		max_rank;
 
 	max_rank = (current_chunk + 1) * chunk_size;
-	target = find_min_in_chunk(*a, max_rank);
-	if (!target)
-		return (0);
-	size = stack_size(*a);
-	dist = position_of_node(*a, target);
-	move_to_top(a, dist, size, count);
-	push_b(a, b, count);
+	while(max_rank > 0)
+	{	
+		size = stack_size(*a);
+		target = find_closest_in_chunk(*a, max_rank, size);
+		if (!target)
+			return (0);
+		dist = position_of_node(*a, target);
+		move_to_top(a, dist, size, count);
+		insert_into_b(a, b, count);
+		printf("--- A ---\n");
+		print_stack(*a);
+		printf("--- B ---\n");
+		print_stack(*b);
+	}
 	return (1);
-}
-
-static int	int_sqrt(int n)
-{
-	int	i;
-
-	i = 1;
-	while (i * i <= n)
-		i++;
-	return (i - 1);
 }
 
 int	algo_medium(t_node **a, t_node **b)

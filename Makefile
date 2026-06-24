@@ -8,6 +8,7 @@ CFLAGS = -Wall -Wextra -Werror
 INCLUDES = -I. -I$(LIBFT_DIR)
 
 SRCS = main.c parse_flags.c parse_numbers.c algo_simple.c check_numbers.c stack_utils.c algo_medium.c\
+	   algo_medium_utils.c \
 	   operations/rotate_a.c \
 	   operations/rotate_b.c \
 	   operations/rrotate_a.c \

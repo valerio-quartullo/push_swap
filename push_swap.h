@@ -6,7 +6,7 @@
 /*   By: vquartul <vquartul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/17 12:21:56 by vquartul          #+#    #+#             */
-/*   Updated: 2026/06/23 12:21:30 by vquartul         ###   ########.fr       */
+/*   Updated: 2026/06/24 14:51:59 by vquartul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ void				move_to_top(t_node **a, int dist, int size, int *count);
 int					algo_simple(t_node **a, t_node **b);
 float				measure_disorder(t_node *a);
 int					algo_medium(t_node **a, t_node **b);
+int					find_insert_position(t_node *b, int value);
+void				insert_into_b(t_node **a, t_node **b, int *count);
 
 /* operazioni base */
 void				push_a(t_node **a, t_node **b, int *count);
@@ -63,5 +65,6 @@ void				rrotate_b(t_node **b, int *count);
 t_node				*new_node(int content);
 int					position_of_node(t_node *head, t_node *node);
 int					atoi_check(const char *nptr);
+void				print_stack(t_node *a);
 
 #endif
