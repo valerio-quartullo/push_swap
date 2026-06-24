@@ -6,7 +6,7 @@
 /*   By: vquartul <vquartul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/17 12:21:56 by vquartul          #+#    #+#             */
-/*   Updated: 2026/06/24 14:51:59 by vquartul         ###   ########.fr       */
+/*   Updated: 2026/06/24 16:03:39 by vquartul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ float				measure_disorder(t_node *a);
 int					algo_medium(t_node **a, t_node **b);
 int					find_insert_position(t_node *b, int value);
 void				insert_into_b(t_node **a, t_node **b, int *count);
+int					find_max_position(t_node *b);
 
 /* operazioni base */
 void				push_a(t_node **a, t_node **b, int *count);

@@ -6,7 +6,7 @@
 /*   By: vquartul <vquartul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/24 10:53:42 by vquartul          #+#    #+#             */
-/*   Updated: 2026/06/24 11:22:59 by vquartul         ###   ########.fr       */
+/*   Updated: 2026/06/24 16:56:46 by vquartul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,23 @@ void	insert_into_b(t_node **a, t_node **b, int *count)
 		}
 	}
 	push_b(a, b, count);
+}
+
+int	find_max_position(t_node *b)
+{
+    int max_val = b->value;
+    int max_pos = 0;
+    int pos = 0;
+    
+    while (b)
+    {
+        if (b->value > max_val)
+        {
+            max_val = b->value;
+            max_pos = pos;
+        }
+        b = b->next;
+        pos++;
+    }
+    return (max_pos);
 }
