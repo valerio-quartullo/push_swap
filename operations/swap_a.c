@@ -9,8 +9,10 @@
 /*   Updated: 2026/06/18 15:52:04 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "push_swap.h"
-void    swap_a(t_node **a, int *count)
+
+void    swap_a(t_node **a, t_count *counter)
 {
     int  value_temp;
     int  rank_temp;
@@ -24,6 +26,6 @@ void    swap_a(t_node **a, int *count)
     (*a)->value = value_temp;
     (*a)->rank = rank_temp;
     write(1, "sa\n", 3);
-    (*count)++;
-    return ;
+    counter->sa ++;
+	counter->tot ++;
 }

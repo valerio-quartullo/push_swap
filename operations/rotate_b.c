@@ -9,9 +9,10 @@
 /*   Updated: 2026/06/18 16:37:08 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "push_swap.h"
 
-void	rotate_b(t_node **b, int *count)
+void	rotate_b(t_node **b, t_count *counter)
 {
 	t_node *first;
 	t_node *tmp;
@@ -26,5 +27,6 @@ void	rotate_b(t_node **b, int *count)
 	tmp->next = first;
 	first->next = NULL;
 	write(1, "rb\n", 3);
-	(*count)++;
+	counter->rb ++;
+	counter->tot ++;
 }

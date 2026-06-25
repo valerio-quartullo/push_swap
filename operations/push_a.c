@@ -9,9 +9,10 @@
 /*   Updated: 2026/06/18 16:18:56 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "push_swap.h"
 
-void	push_a(t_node **a, t_node **b, int *count)
+void	push_a(t_node **a, t_node **b, t_count *counter)
 {
 	t_node	*moved;
 
@@ -22,5 +23,6 @@ void	push_a(t_node **a, t_node **b, int *count)
 	moved->next = *a;
 	*a = moved;
 	write(1, "pa\n", 3);
-	(*count)++;
+	counter->pa ++;
+	counter->tot ++;
 }

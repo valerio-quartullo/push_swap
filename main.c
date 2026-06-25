@@ -6,7 +6,7 @@
 /*   By: vquartul <vquartul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/17 12:29:05 by vquartul          #+#    #+#             */
-/*   Updated: 2026/06/23 13:52:35 by vquartul         ###   ########.fr       */
+/*   Updated: 2026/06/25 15:55:06 by vquartul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,24 @@ void	print_stack(t_node *a)
 {
 	while (a)
 	{
-		printf("%d\n", a->value);
+		printf("%d / ", a->value);
 		a = a->next;
 	}
+}
+
+void init_counter(t_count *counter) {
+	counter->pa= 0;
+	counter->pb= 0;
+	counter->ra= 0;
+	counter->rb= 0;
+	counter->rra= 0;
+	counter->rrb= 0;
+	counter->sa= 0;
+	counter->sb= 0;
+	counter->rr= 0;
+	counter->rrr= 0;
+	counter->ss= 0;
+	counter->tot= 0;	
 }
 
 int	main(int argc, char **argv)
@@ -27,11 +42,13 @@ int	main(int argc, char **argv)
 	t_options	opt;
 	t_node		*a;
 	t_node		*b;
+	t_count		counter;
 	int			start;
 	int			*values;
 
 	if (argc == 1)
 		return (0);
+	init_counter(&counter);
 	opt.strategy = ALGO_ADAPTIVE;
 	opt.bench = 0;
 	start = parse_flags(argc, argv, &opt);
@@ -49,11 +66,16 @@ int	main(int argc, char **argv)
 		printf("Disorder: %.2f%%\n", measure_disorder(a));
 	if (!measure_disorder(a))
 		return (0);
-	
 	if (opt.strategy == ALGO_SIMPLE)
-		printf("algo_simple operations: %d\n\n", algo_simple(&a, &b));
+	{
+	  algo_simple(&a, &b, &counter);
+	  printf("algo_simple operations: %d, %d, %d, %d, %d\n\n", counter.tot, counter.rra, counter.pb, counter.sa, counter.rr);
+	}
 	if (opt.strategy == ALGO_MEDIUM)
-		printf("algo_medium operations: %d\n\n",algo_medium(&a, &b));
+	{
+		algo_medium(&a, &b, &counter);
+		printf("algo_medium operations: %d, %d, %d, %d, %d\n\n", counter.tot, counter.rra, counter.pb, counter.sa, counter.rr);
+	}
 	print_stack(a);
 	return (0);
 }

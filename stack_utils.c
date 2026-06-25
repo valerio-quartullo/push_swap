@@ -6,11 +6,30 @@
 /*   By: vquartul <vquartul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/22 10:50:16 by vquartul          #+#    #+#             */
-/*   Updated: 2026/06/23 12:24:53 by vquartul         ###   ########.fr       */
+/*   Updated: 2026/06/25 15:00:24 by vquartul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	find_max_position(t_node *b)
+{
+    int max_val = b->value;
+    int max_pos = 0;
+    int pos = 0;
+    
+    while (b)
+    {
+        if (b->value > max_val)
+        {
+            max_val = b->value;
+            max_pos = pos;
+        }
+        b = b->next;
+        pos++;
+    }
+    return (max_pos);
+}
 
 int	stack_size(t_node *a)
 {
@@ -40,13 +59,13 @@ int	position_of_node(t_node *head, t_node *node)
 	return (-1);
 }
 
-void	move_to_top(t_node **a, int dist, int size, int *count)
+void	move_to_top(t_node **a, int dist, int size, t_count *counter)
 {
 	if (dist <= size / 2)
 	{
 		while (dist > 0)
 		{
-			rotate_a(a, count);
+			rotate_a(a, counter);
 			dist--;
 		}
 	}
@@ -54,7 +73,7 @@ void	move_to_top(t_node **a, int dist, int size, int *count)
 	{
 		while (dist < size)
 		{
-			rrotate_a(a, count);
+			rrotate_a(a, counter);
 			dist++;
 		}
 	}

@@ -6,7 +6,7 @@
 /*   By: vquartul <vquartul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/19 12:00:36 by marvin            #+#    #+#             */
-/*   Updated: 2026/06/24 10:47:41 by vquartul         ###   ########.fr       */
+/*   Updated: 2026/06/25 15:29:32 by vquartul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_node	*find_min(t_node *a)
 	return (min);
 }
 
-static void	extract_min(t_node **a, t_node **b, int *count)
+static void	extract_min(t_node **a, t_node **b, t_count *counter)
 {
 	t_node	*min;
 	int		dist;
@@ -36,21 +36,17 @@ static void	extract_min(t_node **a, t_node **b, int *count)
 	min = find_min(*a);
 	dist = position_of_node(*a, min);
 	if (dist == 1)
-		swap_a(a, count);
+		swap_a(a, counter);
 	else
-		move_to_top(a, dist, size, count);
+		move_to_top(a, dist, size, counter);
 	if (measure_disorder(*a) != 0)
-		push_b(a, b, count);
+		push_b(a, b, counter);
 }
 
-int	algo_simple(t_node **a, t_node **b)
+void algo_simple(t_node **a, t_node **b, t_count	*counter)
 {
-	int	count;
-
-	count = 0;
 	while (*a && measure_disorder(*a) != 0)
-		extract_min(a, b, &count);
+		extract_min(a, b, counter);
 	while (*b)
-		push_a(a, b, &count);
-	return (count);
+		push_a(a, b, counter);
 }

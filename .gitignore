@@ -1,0 +1,5 @@
+*.o
+*.out
+*.exe
+*.pdf
+push_swap_toolkit/
