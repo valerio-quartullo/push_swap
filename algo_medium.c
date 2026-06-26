@@ -6,7 +6,7 @@
 /*   By: vquartul <vquartul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/23 11:14:30 by vquartul          #+#    #+#             */
-/*   Updated: 2026/06/25 15:52:50 by vquartul         ###   ########.fr       */
+/*   Updated: 2026/06/26 12:47:14 by vquartul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,11 @@ void	move_to_top_b(t_node **b, int max_pos, int size_b, t_count *counter)
 
 void	algo_medium(t_node **a, t_node **b, t_count *counter)
 {
-	int	count;
 	int	size;
 	int	num_chunks;
 	int	chunk_limit;
 	int i;
 	
-	count = 0;
 	size = stack_size(*a);
 	num_chunks = int_sqrt(size);
 	if (num_chunks <= 0)
