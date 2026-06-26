@@ -6,7 +6,7 @@
 /*   By: vquartul <vquartul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/17 12:21:56 by vquartul          #+#    #+#             */
-/*   Updated: 2026/06/25 15:53:31 by vquartul         ###   ########.fr       */
+/*   Updated: 2026/06/26 11:19:06 by vquartul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,13 @@ typedef struct s_count
 int					parse_flags(int argc, char **argv, t_options *opt);
 void				error_exit(void);
 int					*check_numbers(int argc, char **argv, int start);
+int					is_duplicate(int *values, int count, int n);
 void				assign_rank(t_node *a);
 int					parse_numbers(int argc, char **argv, int start, t_node **a);
 int					stack_size(t_node *a);
 int					position_of_node(t_node *head, t_node *node);
-void				move_to_top(t_node **a, int dist, int size, t_count *counter);
+void				move_to_top(t_node **a, int dist, int size,
+						t_count *counter);
 void				algo_simple(t_node **a, t_node **b, t_count *counter);
 float				measure_disorder(t_node *a);
 void				algo_medium(t_node **a, t_node **b, t_count *counter);

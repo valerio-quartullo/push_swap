@@ -6,7 +6,7 @@
 /*   By: vquartul <vquartul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/19 12:00:36 by marvin            #+#    #+#             */
-/*   Updated: 2026/06/25 15:29:32 by vquartul         ###   ########.fr       */
+/*   Updated: 2026/06/26 11:13:56 by vquartul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static void	extract_min(t_node **a, t_node **b, t_count *counter)
 		push_b(a, b, counter);
 }
 
-void algo_simple(t_node **a, t_node **b, t_count	*counter)
+void	algo_simple(t_node **a, t_node **b, t_count *counter)
 {
 	while (*a && measure_disorder(*a) != 0)
 		extract_min(a, b, counter);

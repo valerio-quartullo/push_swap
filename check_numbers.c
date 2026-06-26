@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_numbers.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: vquartul <vquartul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/19 12:53:54 by marvin            #+#    #+#             */
-/*   Updated: 2026/06/19 12:53:54 by marvin           ###   ########.fr       */
+/*   Updated: 2026/06/26 11:20:08 by vquartul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,20 @@ int	is_valid_number(char *str)
 	return (1);
 }
 
+static int	parse_sign(char *str, int *i)
+{
+	int	sign;
+
+	sign = 1;
+	if (str[*i] == '-' || str[*i] == '+')
+	{
+		if (str[*i] == '-')
+			sign = -1;
+		(*i)++;
+	}
+	return (sign);
+}
+
 int	str_to_int(char *str, int *error)
 {
 	int	result;
@@ -38,15 +52,9 @@ int	str_to_int(char *str, int *error)
 	int	i;
 
 	result = 0;
-	sign = 1;
 	i = 0;
 	*error = 0;
-	if (str[i] == '-' || str[i] == '+')
-	{
-		if (str[i] == '-')
-			sign = -1;
-		i++;
-	}
+	sign = parse_sign(str, &i);
 	while (str[i])
 	{
 		digit = str[i] - '0';
@@ -63,26 +71,29 @@ int	str_to_int(char *str, int *error)
 	return (result * sign);
 }
 
-int	is_duplicate(int *values, int count, int n)
+static int	validate_one(char *str, int *values, int count, int *error)
 {
-	int	i;
+	int	n;
 
-	i = 0;
-	while (i < count)
+	if (!is_valid_number(str))
 	{
-		if (values[i] == n)
-			return (1);
-		i++;
+		*error = 1;
+		return (0);
 	}
-	return (0);
+	n = str_to_int(str, error);
+	if (*error || is_duplicate(values, count, n))
+	{
+		*error = 1;
+		return (0);
+	}
+	return (n);
 }
 
 int	*check_numbers(int argc, char **argv, int start)
 {
-	int *values;
-	int i;
-	int error;
-	int n;
+	int		*values;
+	int		i;
+	int		error;
 
 	values = malloc(sizeof(int) * (argc - start));
 	if (!values)
@@ -90,18 +101,13 @@ int	*check_numbers(int argc, char **argv, int start)
 	i = start;
 	while (i < argc)
 	{
-		if (!is_valid_number(argv[i]))
+		error = 0;
+		values[i - start] = validate_one(argv[i], values, i - start, &error);
+		if (error)
 		{
 			free(values);
 			return (NULL);
 		}
-		n = str_to_int(argv[i], &error);
-		if (error || is_duplicate(values, i - start, n))
-		{
-			free(values);
-			return (NULL);
-		}
-		values[i - start] = n;
 		i++;
 	}
 	return (values);

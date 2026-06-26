@@ -6,12 +6,25 @@
 /*   By: vquartul <vquartul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/17 16:21:58 by vquartul          #+#    #+#             */
-/*   Updated: 2026/06/22 11:23:27 by vquartul         ###   ########.fr       */
+/*   Updated: 2026/06/26 11:18:33 by vquartul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+int	is_duplicate(int *values, int count, int n)
+{
+	int	i;
+
+	i = 0;
+	while (i < count)
+	{
+		if (values[i] == n)
+			return (1);
+		i++;
+	}
+	return (0);
+}
 
 t_node	*new_node(int content)
 {
@@ -41,10 +54,10 @@ void	assign_rank(t_node *a)
 
 	new_rank = 0;
 	current = a;
-	while(current)
+	while (current)
 	{
 		compare = a;
-		while(compare)
+		while (compare)
 		{
 			if (current->value > compare->value)
 				new_rank++;
