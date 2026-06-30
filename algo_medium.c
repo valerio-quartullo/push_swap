@@ -6,7 +6,7 @@
 /*   By: vquartul <vquartul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/23 11:14:30 by vquartul          #+#    #+#             */
-/*   Updated: 2026/06/26 12:47:14 by vquartul         ###   ########.fr       */
+/*   Updated: 2026/06/30 11:27:42 by vquartul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,18 +42,11 @@ void	move_to_top_b(t_node **b, int max_pos, int size_b, t_count *counter)
 	}
 }
 
-void	algo_medium(t_node **a, t_node **b, t_count *counter)
+static void	dispatch_chunks(t_node **a, t_node **b, t_count *counter,
+		int chunk_limit)
 {
-	int	size;
-	int	num_chunks;
-	int	chunk_limit;
-	int i;
-	
-	size = stack_size(*a);
-	num_chunks = int_sqrt(size);
-	if (num_chunks <= 0)
-		num_chunks = 1;
-	chunk_limit = size / num_chunks;
+	int	i;
+
 	i = 0;
 	while (*a)
 	{
@@ -72,9 +65,28 @@ void	algo_medium(t_node **a, t_node **b, t_count *counter)
 		else
 			rotate_a(a, counter);
 	}
+}
+
+static void	restore_a(t_node **a, t_node **b, t_count *counter)
+{
 	while (*b)
 	{
 		move_to_top_b(b, find_max_position(*b), stack_size(*b), counter);
 		push_a(a, b, counter);
 	}
+}
+
+void	algo_medium(t_node **a, t_node **b, t_count *counter)
+{
+	int	size;
+	int	num_chunks;
+	int	chunk_limit;
+
+	size = stack_size(*a);
+	num_chunks = int_sqrt(size);
+	if (num_chunks <= 0)
+		num_chunks = 1;
+	chunk_limit = size / num_chunks;
+	dispatch_chunks(a, b, counter, chunk_limit);
+	restore_a(a, b, counter);
 }

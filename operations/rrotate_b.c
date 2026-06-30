@@ -2,9 +2,12 @@
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   rrotate_b.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
+/*                                                    +:+ +:+
+	+:+     */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+
+	+#+        */
+/*                                                +#+#+#+#+#+
+	+#+           */
 /*   Created: 2026/06/18 16:39:23 by marvin            #+#    #+#             */
 /*   Updated: 2026/06/18 16:39:23 by marvin           ###   ########.fr       */
 /*                                                                            */
@@ -14,8 +17,8 @@
 
 void	rrotate_b(t_node **b, t_count *counter)
 {
-	t_node *last;
-	t_node	*prev;
+	t_node		*last;
+	t_node		*prev;
 
 	if (!*b || !(*b)->next)
 		return ;
@@ -30,6 +33,6 @@ void	rrotate_b(t_node **b, t_count *counter)
 	last->next = *b;
 	*b = last;
 	write(1, "rrb\n", 4);
-	counter->rrb ++;
-	counter->tot ++;
+	counter->rrb++;
+	counter->tot++;
 }

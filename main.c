@@ -6,7 +6,7 @@
 /*   By: vquartul <vquartul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/17 12:29:05 by vquartul          #+#    #+#             */
-/*   Updated: 2026/06/26 11:25:17 by vquartul         ###   ########.fr       */
+/*   Updated: 2026/06/30 14:28:25 by vquartul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,14 +64,12 @@ static void	run_algorithm(t_node **a, t_node **b, t_options *opt,
 	if (opt->strategy == ALGO_SIMPLE)
 	{
 		algo_simple(a, b, counter);
-		printf("algo_simple operations: %d, %d, %d, %d, %d\n\n", counter->tot,
-			counter->rra, counter->pb, counter->sa, counter->rr);
+		printf("algo_simple operations: %d, %d, %d, %d, %d\n\n", counter->tot, counter->rra, counter->pb, counter->sa, counter->rr);
 	}
 	if (opt->strategy == ALGO_MEDIUM)
 	{
 		algo_medium(a, b, counter);
-		printf("algo_medium operations: %d, %d, %d, %d, %d\n\n", counter->tot,
-			counter->rra, counter->pb, counter->sa, counter->rr);
+		printf("algo_medium operations: %d, %d, %d, %d, %d\n\n", counter->tot, counter->rra, counter->pb, counter->sa, counter->rr);
 	}
 }
 
@@ -90,12 +88,16 @@ int	main(int argc, char **argv)
 	start = init_and_parse(argc, argv, &opt, &a, &counter);
 	if (start < 0)
 		return (0);
+	opt.order = measure_disorder(a);
+	opt.number = argc - start;
 	if (opt.bench)
-		printf("Disorder: %.2f%%\n", measure_disorder(a));
+		printf("Disorder: %.2f%%\n", opt.order);
 	if (!measure_disorder(a))
 		return (0);
-	run_algorithm(&a, &b, &opt, &counter);
-	print_stack(a);
+	if (opt.strategy == ALGO_ADAPTIVE)
+		algo_adaptive(&a, &b, &counter, &opt);
+	else
+		run_algorithm(&a, &b, &opt, &counter);
 	return (0);
 }
 

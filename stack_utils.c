@@ -6,29 +6,38 @@
 /*   By: vquartul <vquartul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/22 10:50:16 by vquartul          #+#    #+#             */
-/*   Updated: 2026/06/25 15:00:24 by vquartul         ###   ########.fr       */
+/*   Updated: 2026/06/30 11:42:10 by vquartul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+void	error_exit(void)
+{
+	write(2, "Error\n", 6);
+	exit(1);
+}
+
 int	find_max_position(t_node *b)
 {
-    int max_val = b->value;
-    int max_pos = 0;
-    int pos = 0;
-    
-    while (b)
-    {
-        if (b->value > max_val)
-        {
-            max_val = b->value;
-            max_pos = pos;
-        }
-        b = b->next;
-        pos++;
-    }
-    return (max_pos);
+	int	max_val;
+	int	max_pos;
+	int	pos;
+
+	max_val = b->value;
+	max_pos = 0;
+	pos = 0;
+	while (b)
+	{
+		if (b->value > max_val)
+		{
+			max_val = b->value;
+			max_pos = pos;
+		}
+		b = b->next;
+		pos++;
+	}
+	return (max_pos);
 }
 
 int	stack_size(t_node *a)

@@ -6,7 +6,7 @@
 /*   By: vquartul <vquartul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 12:08:44 by vquartul          #+#    #+#             */
-/*   Updated: 2026/06/25 15:45:15 by vquartul         ###   ########.fr       */
+/*   Updated: 2026/06/30 10:52:59 by vquartul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	rotate_a(t_node **a, t_count *counter)
 {
-	t_node *first;
-	t_node *tmp;
+	t_node	*first;
+	t_node	*tmp;
 
 	if (!*a || !(*a)->next)
 		return ;
@@ -27,6 +27,6 @@ void	rotate_a(t_node **a, t_count *counter)
 	tmp->next = first;
 	first->next = NULL;
 	write(1, "ra\n", 3);
-	counter->ra ++;
-	counter->tot ++;
+	counter->ra++;
+	counter->tot++;
 }

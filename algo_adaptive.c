@@ -1,35 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rrotate_a.c                                        :+:      :+:    :+:   */
+/*   algo_adaptive.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vquartul <vquartul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/18 12:05:52 by vquartul          #+#    #+#             */
-/*   Updated: 2026/06/30 11:06:45 by vquartul         ###   ########.fr       */
+/*   Created: 2026/06/30 12:03:18 by vquartul          #+#    #+#             */
+/*   Updated: 2026/06/30 14:45:08 by vquartul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	rrotate_a(t_node **a, t_count *counter)
+void	algo_adaptive(t_node **a, t_node **b, t_count *counter, t_options *opt)
 {
-	t_node	*last;
-	t_node	*prev;
-
-	if (!*a || !(*a)->next)
-		return ;
-	prev = *a;
-	last = (*a)->next;
-	while (last->next)
+	if (opt->number <= 15 || (opt->number <= 100 && opt->order >= 0.85)
+		|| (opt->number <= 500 && opt->order >= 0.95))
 	{
-		prev = last;
-		last = last->next;
+		algo_simple(a, b, counter);
+		printf("%d <= 15 - algo_simple", opt->number);
 	}
-	prev->next = NULL;
-	last->next = *a;
-	*a = last;
-	write(1, "rra\n", 4);
-	counter->rra++;
-	counter->tot++;
+	else
+	{
+		algo_medium(a, b, counter);
+		printf("%d > 15 - algo_medium", opt->number);
+	}
+	printf("\n%d", counter->tot);
 }

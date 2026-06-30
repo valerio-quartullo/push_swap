@@ -2,9 +2,12 @@
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   rotate_b.c                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
+/*                                                    +:+ +:+
+	+:+     */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+
+	+#+        */
+/*                                                +#+#+#+#+#+
+	+#+           */
 /*   Created: 2026/06/18 16:37:08 by marvin            #+#    #+#             */
 /*   Updated: 2026/06/18 16:37:08 by marvin           ###   ########.fr       */
 /*                                                                            */
@@ -14,8 +17,8 @@
 
 void	rotate_b(t_node **b, t_count *counter)
 {
-	t_node *first;
-	t_node *tmp;
+	t_node		*first;
+	t_node		*tmp;
 
 	if (!*b || !(*b)->next)
 		return ;
@@ -27,6 +30,6 @@ void	rotate_b(t_node **b, t_count *counter)
 	tmp->next = first;
 	first->next = NULL;
 	write(1, "rb\n", 3);
-	counter->rb ++;
-	counter->tot ++;
+	counter->rb++;
+	counter->tot++;
 }

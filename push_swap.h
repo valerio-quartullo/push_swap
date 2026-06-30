@@ -6,7 +6,7 @@
 /*   By: vquartul <vquartul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/17 12:21:56 by vquartul          #+#    #+#             */
-/*   Updated: 2026/06/26 11:19:06 by vquartul         ###   ########.fr       */
+/*   Updated: 2026/06/30 13:02:47 by vquartul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ typedef struct s_options
 {
 	int				strategy;
 	int				bench;
+	float			order;
+	int				number;
 }					t_options;
 
 typedef struct s_node
@@ -80,5 +82,6 @@ t_node				*new_node(int content);
 int					position_of_node(t_node *head, t_node *node);
 int					atoi_check(const char *nptr);
 void				print_stack(t_node *a);
+void				algo_adaptive(t_node **a, t_node **b, t_count *counter, t_options *opt);
 
 #endif
